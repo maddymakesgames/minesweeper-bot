@@ -4,6 +4,8 @@ To run the bot rename `example_config.json` to `config.json` and put your bot to
 Once that is setup just run `node index.js`
 
 The bot has one command:
-    ms!start [board size] [mines]
-        board size should be formatted like "3x3" and controls the dimensions of the board.
-        mines is the number of mines.
+ms!start [board size] [mines]
+
+board size should be formatted like "3x3" and controls the dimensions of the board.
+
+mines is the number of mines.
