@@ -22,12 +22,15 @@ client.on('message', (message) => {
 
     let args = message.content.split(' ');
     console.log(args);
-    if(args[0] != 'start') return message.channel.send('Use ms!start to get a minesweeper game.');
-    else {
+    if(args[0] == 'help' || message.mentions.users.has(client.user.id)) {
+        message.channel.send('ms!start [size] [bombs]\n     size is formatted as 7x7 where the first number is the width and the second number is the height.\n    bombs is the number of bombs in the board.');
+    }
+    else if(args[0] == 'start'){
         args = args.slice(1, args.length);
         if(!args[0]) args[0] = '5x5'
         let size = args[0].split('x');
-        let bombs = args[1] || size[0]
+        let bombs = args[1] || size[0];
+        if(bombs > size[0]*size[1]) message.channel.send('There can\'t be more bombs than spaces.');
         return minesweeper(size, bombs, message, client);
     }
 });
