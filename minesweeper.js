@@ -30,8 +30,9 @@ module.exports = async (size, b, message, client) => {
         out[y] = `||${game[y].join('||||')}||`;
     }
     let output = out.join('\n');
-    output += `\nbombx${b}`
-    output = output.replace(/1/g, ':one:').replace(/2/g, ':two:').replace(/3/g, ':three:').replace(/0/g, ':white_large_square:').replace(/4/g, ':four:').replace(/5/g, ':five:').replace(/6/g, ':six:').replace(/7/g, ':seven:').replace(/8/g, ':eight:').replace(/bomb/g, ':boom:');
-    if(output.length > 2000) return message.channel.send('Board too big');
-    message.channel.send(output);
+    output = output.replace(/1/g, ':one:').replace(/2/g, ':two:').replace(/3/g, ':three:').replace(/0/g, '⬜').replace(/4/g, ':four:').replace(/5/g, ':five:').replace(/6/g, ':six:').replace(/7/g, ':seven:').replace(/8/g, ':eight:').replace(/bomb/g, '💣');
+    output += `\n💣x${b}`
+    let splitOutput = output.match(/.{1,2000}/g);
+    console.log(splitOutput);
+    splitOutput.forEach(async (str) => await message.channel.send(str));
 }
