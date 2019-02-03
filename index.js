@@ -30,7 +30,7 @@ client.on('message', (message) => {
         if(!args[0]) args[0] = '5x5'
         let size = args[0].split('x');
         let bombs = args[1] || size[0];
-        if(size[0] > 29) return message.channel.send('The max width for a board is 29');
+        if(size[0] > 30) return message.channel.send('The max width for a board is 30');    
         if(bombs > size[0]*size[1])return message.channel.send('There can\'t be more bombs than spaces.');
         return minesweeper(size, bombs, message, client);
     }
